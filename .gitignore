@@ -1,2 +1,5 @@
 *credentials*
+# TODO why wasn't ~/.gitignore making these unnecessary?
+.direnv
 __pycache__/
+*.swp

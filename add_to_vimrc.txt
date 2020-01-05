@@ -1,0 +1,6 @@
+
+" This line starts the next this many characters over to the right,
+" which is a hack to make the screen not cut off on my server where
+" I couldn't get the display to work exactly right.
+set foldcolumn=5
+

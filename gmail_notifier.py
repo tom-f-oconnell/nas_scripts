@@ -4,6 +4,7 @@ from os.path import dirname, realpath, join
 from email.mime.text import MIMEText
 import base64
 import smtplib
+from string import printable
 
 
 def create_email(sender, to, subject, message_text):
@@ -16,11 +17,14 @@ def create_email(sender, to, subject, message_text):
     Returns:
       An object containing a base64url encoded email object.
     """
+    # This is intended to strip non-ascii chars in message_text
+    message_text = ''.join(filter(lambda x: x in printable, message_text))
+    
     message = MIMEText(message_text)
     message['to'] = to
     message['from'] = sender
     message['subject'] = subject
-    return {'raw': base64.urlsafe_b64encode(message.as_bytes()).decode()}
+    return message.as_bytes()
 
 
 def default_gmail_credential_path():
@@ -46,17 +50,20 @@ def send_email(message, subject='', to=None, gmail_credential_file=None):
     if to is None:
         to = gmail_acc
 
+    # To remove non-ascii characters, since their presence seem to make the 
+    # try block fail somewhere.
+
     email = create_email(gmail_acc, to, subject, message)
     try:
         server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
         server.ehlo()
         server.login(gmail_acc, gmail_passw)
-        server.sendmail(gmail_acc, to, message)
+        server.sendmail(gmail_acc, to, email)
         server.close()
         #print('Email sent!')
     except Exception as err:
         print('Something went wrong...')
-        #print(err)
+        print(err)
         #import ipdb; ipdb.set_trace()
 
 

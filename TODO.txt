@@ -1,0 +1,9 @@
+
+- add logging to HDD temperature data (ideally with some display functions...
+  maybe upload to some iot thing for that, ideally encrypted)
+
+- add command (bash function?) that prints anything using drives
+  - + one that checks they are in min power state (to spin down)
+    (+ sets maybe)
+  - + one that checks whether they are currently spinning
+

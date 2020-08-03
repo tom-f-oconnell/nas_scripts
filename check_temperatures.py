@@ -26,12 +26,8 @@ def main():
     hddtemp_out = check_output('sudo hddtemp /dev/sd?', shell=True).decode()
     #sensors_out = check_output('sensors').decode()
 
-    # for testing
-    #min_report_period_s = 60
     min_report_period_s = 60 * 60 * 3
 
-    # for testing
-    #hdd_report_temp_celsius = 20
     hdd_report_temp_celsius = 45
     hdd_shutdown_temp_celsius = 50
     assert (hdd_shutdown_temp_celsius is None or

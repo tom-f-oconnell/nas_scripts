@@ -20,7 +20,14 @@ To setup SMART harddrive health monitoring:
 ...then copy `etc-smartd.conf` and `etc-msmtprc` to `/etc/smartd.conf` and 
 `/etc/msmtprc`, respectively, and manually change `GMAIL_USER` and `PASSWORD`
 placeholders in both to the corresponding values you saved to the
-`gmail_credentials.txt` file.
+`gmail_credentials.txt` file. `/etc/msmtprc` should have `644` permissions, but
+this seemed to be the default for me anyway.
+
+To test that the email setup worked correctly:
+```
+./test_smartd_email.sh
+```
+You should receive an email to the same account that was set up as the sender.
 
 
 To setup temperature monitoring/alerting/automatic shutdown:

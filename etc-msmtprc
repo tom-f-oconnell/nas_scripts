@@ -1,0 +1,17 @@
+defaults
+auth on
+tls  on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+logfile /var/log/msmtp.log
+
+# Gmail configuration
+# NOTE: the password here is an app-specific password, the same one I originally
+# created for the temperature reporting script on the same machine
+account gmail
+host    smtp.gmail.com
+port    587
+from    GMAIL_USER@gmail.com
+user    GMAIL_USER
+password PASSWORD
+
+account default: gmail

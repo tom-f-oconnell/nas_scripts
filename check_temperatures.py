@@ -2,6 +2,8 @@
 
 """
 Checks HDD temps and sends an email alert if they are too high.
+
+Can also be configured to shutdown NAS if temperatures reach another threshold.
 """
 
 from subprocess import check_output, Popen
@@ -17,6 +19,12 @@ from datetime import datetime, timedelta
 from gmail_notifier import send_email
 
 
+# TODO add argument to only print out all the drive temps not send email /
+# shutdown (despite whether current temps are > threshold)
+# TODO option to print both thresholds, as well as time(s) required to exceed
+# threshold(s), if applicable
+
+
 # TODO run this once on setup so installer can see which drives are being
 # reported on / fix problems
 def main():
@@ -29,7 +37,11 @@ def main():
     min_report_period_s = 60 * 60 * 3
 
     hdd_report_temp_celsius = 45
-    hdd_shutdown_temp_celsius = 50
+    #hdd_shutdown_temp_celsius = 50
+    # TODO is 50 really much better than recommended range reported w/ 
+    # `sudo smartctl -x /dev/sda`, in a line like this one:
+    # `Min/Max recommended Temperature:      0/60 Celsius`
+    hdd_shutdown_temp_celsius = 60
     assert (hdd_shutdown_temp_celsius is None or
         hdd_shutdown_temp_celsius >= hdd_report_temp_celsius
     )

@@ -7,3 +7,10 @@
     (+ sets maybe)
   - + one that checks whether they are currently spinning
 
+- finish script to install + configure smartd and that mail program
+
+- actually test smartd email notifications with that failed drive i have from
+  lab? (i know the email works via '-M test' + daemon restart, but don't know
+  the format / whether it would actually trigger w/ a drive w/ a decent amount
+  of bad sectors like this)
+

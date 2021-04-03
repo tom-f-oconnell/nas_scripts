@@ -23,3 +23,7 @@ sudo crontab -l | { cat; echo "$new_cron_line"; } | sudo crontab -
 # script that generates them, w/ arg to print command outputs), so
 # installer can tell to what extent things are working + fix if not
 
+# TODO add an option / another script to uninstall this temperature monitoring.
+# the automatic shutoff can be a pain... (or at least to disable automatic
+# shutoff)
+

@@ -1,11 +1,47 @@
 
+- find cause of processes i'm running via ssh freezing:
+  - is it network related? could it be improved by using a different network
+    connection on the back?
+
+  - is it related to io on the particular USB drive i'm running the OS from?
+    maybe try switching to a SSD?
+
+
+  symptoms:
+  - programs will freeze for ~tens of seconds - minutes, and their output won't
+    update. this is often VIM, but just cause i'm using it the most i think.
+    i've also seen it in a `sudo apt upgrade` call, i believe?
+
+  - the problem did seem to get worse in other terminals when i was running the
+    upgrade
+
+  - not all terminals are affected at the same time. i might have two terminals,
+    each with vim editing something, and it has affected one but not the other.
+
+
+- determine (via docs / maybe benchmarking) whether it would make more sense to
+  use a particular ethernet port on the back of the machine
+
+  - also, does this mobo support + my current switch link aggregation (or
+    whatever the right term is), to use multiple for the same connections (for
+    higher speeds)?
+
+
+- add instructions [+ utilities?] for backing up / restoring system partition
+  (one currently on the USB drive plugged in to the motherboard) (and do it...)
+
+
+- some organization to separate out scripts intended to be used manually vs
+  those just for automated stuff (probably move all automated stuff to
+  subfolder?)
+
+
+- figure out how to [and whether i want to] disable mlocatedb that does a lot of (i think?) unnecessary
+  IO every so often: https://askubuntu.com/questions/268130
+
+
 - add logging to HDD temperature data (ideally with some display functions...
   maybe upload to some iot thing for that, ideally encrypted)
-
-- add command (bash function?) that prints anything using drives
-  - + one that checks they are in min power state (to spin down)
-    (+ sets maybe)
-  - + one that checks whether they are currently spinning
 
 - finish script to install + configure smartd and that mail program
 
